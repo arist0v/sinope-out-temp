@@ -1,0 +1,74 @@
+{
+    "manifest_version": 1,
+    "id": "sinope_out_temp",
+    "name": "Sinope Outside Temperature Provider",
+    "short_name": "sinope_out_temp",
+    "version" : "0.0.1",
+    "description": "Provide eternal temperature value for Sinope Thermostat",
+    "homepage_url": "https://github.com/Bad-Wolf-developpement/sinope-outside-temperature",    
+    "license": "MIT",
+    "author": "Bad-Wolf-Developpement",
+    "options":{
+        "default":{
+            "mqtt_server": "localhost",
+            "mqtt_port": 1883,
+            "debug_mode": false
+        },
+        "schema":{
+           "type": "object",
+           "required":[
+                "mqtt_server",
+                "mqtt_port",
+                "api_key"
+           ],
+           "properties":{
+               "mqtt_server":{
+                    "type": "string",
+                    "title": "Server name or ip",
+                    "description": "Mqtt Server name or ip address"
+               },
+               "mqtt_port":{
+                   "type":"number",
+                   "title": "Mqtt Port",
+                   "description": "Port of the Mqtt server"
+               },
+               "mqtt_username":{
+                   "type": "string",
+                   "title": "Mqtt username",
+                   "description": "Username for the Mqtt server, leave empty if none"
+               },
+               "mqtt_password":{
+                   "type": "string",
+                   "title": "Mqtt Password",
+                   "description": "password for Mqtt server, leave empty if none"
+               },
+                "api_key":{
+                    "type": "string",
+                    "title": "API Key",
+                    "description": "Webthings API Key"
+                },
+               "debug_mode":{
+                   "type": "boolean",
+                   "title": "Debug Log",
+                    "description":"Enable Debug Log"
+               }
+           }
+        }
+    },
+    "content_scripts": [
+        {
+            "css":[
+                "css/extensions.css"
+            ]
+        }
+    ],
+    "gateway_specific_settings":{
+        "webthings":{
+            "exec": "{nodeloader} {path}",
+            "primary_type": "extension",
+            "strict_max_Version": "*",
+            "strict_min_version": "0.10.0"
+        }
+    }
+
+}
