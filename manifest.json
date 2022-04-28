@@ -1,10 +1,10 @@
 {
     "manifest_version": 1,
-    "id": "sinope_out_temp",
+    "id": "sinope-out-temp",
     "name": "Sinope Outside Temperature Provider",
     "short_name": "sinope_out_temp",
     "version" : "0.0.1",
-    "description": "Provide eternal temperature value for Sinope Thermostat",
+    "description": "Provide external temperature value for Sinope Thermostat",
     "homepage_url": "https://github.com/Bad-Wolf-developpement/sinope-outside-temperature",    
     "license": "MIT",
     "author": "Bad-Wolf-Developpement",
