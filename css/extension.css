@@ -1,9 +1,9 @@
 body {
-    background-color:rgb(93, 155, 199)!important
+    background-color:rgb(93, 155, 199)!important;
 }
 
-#extension-sinope-out-temp-menu-item{
-    background-image: url('../images/menu-icon.svg');
+#main-menu #extension-sinope-out-temp-menu-item{
+    background-image: url(../images/menu-icon.svg);
 } 
 
 #extension-sinope-out-temp-title{
@@ -29,4 +29,19 @@ body {
     max-width:60rem;
     margin:0 auto;
     padding:2rem;
+    margin-left: 10rem;
+}
+
+#extension-sinope-out-temp-content-container{
+    margin-left:10rem;
+    width:calc(100vw - 10rem);
+    height:100vh;
+    overflow:auto;
+}
+
+#extension-sinope-out-temp-view{
+    margin-left:10rem;
+    width:calc(100vw - 10rem);
+    height:100vh;
+    overflow:auto;
 }
