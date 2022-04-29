@@ -26,9 +26,9 @@
     		else{
     			this.view.innerHTML = this.content;
     		}
-            
+            /*
 			window.API.postJson(
-				`/extensions/sinope-out-temp/api/ajax`,
+				`/extensions/${this.id}]/api/init`,
 				{'action':'init' }
 			).then((body) => { 
 				console.log("init response: ");
@@ -43,7 +43,7 @@
 
 			}).catch((e) => {
 				alert("connection error");
-			});
+			});*/
             
         }
     }
