@@ -1,5 +1,6 @@
 body {
     background-color:rgb(93, 155, 199)!important;
+    color: white;
 }
 
 #main-menu #extension-sinope-out-temp-menu-item{
@@ -7,10 +8,10 @@ body {
 } 
 
 #extension-sinope-out-temp-title{
-    text-align: left;
+    text-align: center;
     font-family: 'Open Sans', sans-serif;
     font-weight: normal;
-    font-size: 1.8rem;
+    font-size: 2.8rem;
     margin: 0 auto;
     display: block;
     padding: 1rem;
@@ -34,6 +35,7 @@ body {
 
 #extension-sinope-out-temp-content-container{
     margin-left:10rem;
+    font-size: 1.8rem;
     width:calc(100vw - 10rem);
     height:100vh;
     overflow:auto;
@@ -41,7 +43,5 @@ body {
 
 #extension-sinope-out-temp-view{
     margin-left:10rem;
-    width:calc(100vw - 10rem);
-    height:100vh;
     overflow:auto;
 }
