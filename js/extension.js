@@ -5,6 +5,10 @@
             console.log("extension.js class created");
             super('sinope-out-temp');
             this.addMenuEntry('Sinope');
+			
+			this.sinopeMacOUI = "500b914"
+
+			this.sinope_thermostats = this.get_sinope_thermostat();
             
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
@@ -26,10 +30,6 @@
     		else{
     			this.view.innerHTML = this.content;
     		}
-			API.getThings().then((things)=>{
-				this.all_things = things;
-				document.write(things)
-			})
             /*
 			window.API.postJson(
 				`/extensions/${this.id}]/api/init`,
@@ -50,6 +50,22 @@
 			});*/
             
         }
+
+		get_sinope_thermostat(){
+			let sinope_theromstats = []
+			API.getThings().then((things)=>{
+				
+				for (let key in things){
+					if ((things[key]['@type'] == "Thermostat") && (things[key]['id'].indexOf(this.sinopeMacOUI) >= 0)){
+						if (!sinope_theromstats.includes(things[key]['id'])){
+							sinope_theromstats.push(things[key]['id']);
+						}
+					}
+				}
+				document.getElementById("extension-sinope-out-temp-test").innerHTML = this.test;
+			})
+			return sinope_theromstats;
+		}
     }
     
     new sinopeOutTemp();
