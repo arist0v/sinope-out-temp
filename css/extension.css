@@ -1,0 +1,32 @@
+body {
+    background-color:red!important
+}
+
+#extension-sinope-out-temp-menu-item{
+    background-image: url('../images/menu-icon.svg');
+} 
+
+#extension-sinope-out-temp-title{
+    text-align: left;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+    margin: 0 auto;
+    display: block;
+    padding: 1rem;
+    padding-left: 3.8rem;
+    font-size: 1.8rem;
+    background-size: 2.8rem;
+    background-repeat: no-repeat;
+    background-position: 0;
+    background-image: url(../images/menu-icon.svg);
+    width: 16rem;
+    margin: 0 auto;
+}
+
+
+#extension-sinope-out-temp-content{
+    max-width:60rem;
+    margin:0 auto;
+    padding:2rem;
+}

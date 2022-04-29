@@ -1,18 +1,37 @@
 {
-    "manifest_version": 1,
-    "id": "sinope-out-temp",
-    "name": "Sinope Outside Temperature Provider",
-    "short_name": "sinope_out_temp",
-    "version" : "0.0.1",
-    "description": "Provide external temperature value for Sinope Thermostat",
-    "homepage_url": "https://github.com/Bad-Wolf-developpement/sinope-outside-temperature",    
-    "license": "MIT",
     "author": "Bad-Wolf-Developpement",
-    "options":{
+    "content_scripts": [
+      {
+        "css": [
+          "css/extension.css"
+        ],
+        "js": [
+          "js/extension.js"
+        ]
+      }
+    ],
+    "description": "Outside Temperature Provider for Sinope Thermostat",
+    "gateway_specific_settings": {
+      "webthings": {
+        "exec": "python3 {path}/main.py",
+        "primary_type": "extension",
+        "strict_max_version": "*",
+        "strict_min_version": "0.10.0"
+      }
+    },
+    "homepage_url": "https://github.com/Bad-Wolf-developpement/sinope-out-temp",
+    "id": "sinope-out-temp",
+    "license": "MIT",
+    "manifest_version": 1,
+    "name": "Sinope Temp",
+    "options": {
         "default":{
-            "mqtt_server": "localhost",
-            "mqtt_port": 1883,
-            "debug_mode": false
+          "mqtt_server": "localhost",
+          "mqtt_port": 1883,
+          "mqtt_username": "",
+          "mqtt_password": "",
+          "debug_mode": false,
+          "api_key":""
         },
         "schema":{
            "type": "object",
@@ -55,20 +74,12 @@
            }
         }
     },
-    "content_scripts": [
-        {
-            "css":[
-                "css/extensions.css"
-            ]
-        }
-    ],
-    "gateway_specific_settings":{
-        "webthings":{
-            "exec": "{nodeloader} {path}",
-            "primary_type": "extension",
-            "strict_max_Version": "*",
-            "strict_min_version": "0.10.0"
-        }
-    }
-
-}
+    "short_name": "sinope",
+    "version": "0.0.1",
+    "web_accessible_resources": [
+      "css/*.css",
+      "images/*.svg",
+      "js/*.js",
+      "views/*.html"
+    ]
+  }
