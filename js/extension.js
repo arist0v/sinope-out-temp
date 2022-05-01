@@ -9,6 +9,8 @@
 			this.sinopeMacOUI = "500b914"
 
 			this.sinope_thermostats = this.get_sinope_thermostat();
+			
+			this.temperature_property = this.get_temp_property();
             
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
@@ -23,13 +25,16 @@
         }
 
         show(){
-            
+            let testDiv = 'extension-sinope-out-temp-test'
     		if(this.content == ''){
     			return;
     		}
     		else{
     			this.view.innerHTML = this.content;
     		}
+			
+			console.log(this.sinope_thermostats)
+			console.log(this.temperature_property)
             /*
 			window.API.postJson(
 				`/extensions/${this.id}]/api/init`,
@@ -52,19 +57,44 @@
         }
 
 		get_sinope_thermostat(){
+			console.log('get sinope thermostats')
 			let sinope_theromstats = []
 			API.getThings().then((things)=>{
 				
 				for (let key in things){
-					if ((things[key]['@type'] == "Thermostat") && (things[key]['id'].indexOf(this.sinopeMacOUI) >= 0)){
+					if ((things[key]['@type'] == "Thermostat") && (things[key]['id']
+					.indexOf(this.sinopeMacOUI) >= 0)){
 						if (!sinope_theromstats.includes(things[key]['id'])){
+							//console.log('thermostats id: ' + things[key]['id'])
 							sinope_theromstats.push(things[key]['id']);
 						}
 					}
 				}
-				document.getElementById("extension-sinope-out-temp-test").innerHTML = this.test;
+				//console.log('sinope thermostats: '+ sinope_theromstats)
+				
 			})
 			return sinope_theromstats;
+			
+		}
+
+		get_temp_property(){
+			let tempProperty = []
+			API.getThings().then((things)=> {
+				for (let thing in things){
+					let thingID = things[thing]['id']
+					for (let property in things[thing]['properties']){
+							let propertyTitle = things[thing]['properties'][property]['title']
+							if (things[thing]['properties'][property]['@type'] == "TemperatureProperty"){
+								if (!tempProperty.includes([thingID, propertyTitle])){
+									if (thingID.indexOf(this.sinopeMacOUI) < 0){
+										tempProperty.push([thingID, propertyTitle]);
+									}
+								}
+							}
+					}
+				}	
+			})
+			return tempProperty;
 		}
     }
     
