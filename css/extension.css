@@ -58,8 +58,8 @@ body {
 }
 
 #extension-sinope-out-temp-list-element select{
-    position:static;
-    left: 10;
+    position:absolute;
+    right: 0px;
     font-size: 1.8rem;
     color: white;
     line-height: 1.3;
