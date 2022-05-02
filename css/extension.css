@@ -75,7 +75,7 @@ body {
     padding-right: 3.5rem;   
 }
 
-#extension-sinope-out-save-button{
+#extension-sinope-out-save-button button{
     font-size: 1.8rem;
     color: white;
     line-height: 1.3;
