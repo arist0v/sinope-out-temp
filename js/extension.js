@@ -103,7 +103,7 @@
 				 + 
 				 thingName 
 				 + 
-				 '</span> will display Outside Temperature from source: <select name=\'sensor_' + i + '\' id=\'sensor\'>'
+				 '</span> will display Outside Temperature from source: <select name=\'sensor_' + i + '\' id=\'sensor_' + i + '\'>'
 				 + 
 				 dropDown 
 				 +				 
