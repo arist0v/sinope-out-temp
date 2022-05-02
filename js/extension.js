@@ -73,6 +73,7 @@
 		show_list(things){
 			let listContent = "";
 			let thingName;
+			let dropDown = get_dropDown();
 			this.sinope_thermostats.forEach((thingsID) => {
 				for (let thing in things){
 					if (things[thing]['id'] == thingsID){
@@ -81,12 +82,28 @@
 				}
 				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
 				 + 
-				 'Sinope Thermostat : ' + thingName + ' will display Outside Temperature from source: '
-				 +
+				 'Sinope Thermostat : ' 
+				 + 
+				 thingName 
+				 + 
+				 ' will display Outside Temperature from source: '
+				 + 
+				 dropDown 
+				 +				 
 				 '</div>';
 			});
 
 			return listContent;
+		}
+
+		get_dropDown(){
+			let tempDropdown = `
+			<select name=\'sensor\' id=\'sensor\'>
+			 <option value=\'none\'>None</option>
+			`
+
+			tempDropdown = tempDropdown + '</select>'
+			return tempDropdown
 		}
 
 		get_sinope_thermostat(things){
