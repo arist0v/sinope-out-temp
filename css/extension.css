@@ -48,7 +48,7 @@ body {
 }
 
 #extension-sinope-out-temp-list-element{
-    display: flex;
+    display: block;
     padding: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -59,8 +59,7 @@ body {
 }
 
 #extension-sinope-out-temp-list-element select{
-    right: 0;
-    align-content: end;
+    align-content: right;
     font-size: 1.8rem;
     color: white;
     line-height: 1.3;
