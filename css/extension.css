@@ -86,7 +86,6 @@ body {
     border: none;
     background-color: #4d8bb7;
     appearance: none;
-    background-image: url(/images/select-arrow.svg);
     background-repeat: no-repeat;
     background-size: 1.25rem;
     background-position: calc(100% - 1rem);
