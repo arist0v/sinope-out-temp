@@ -22,9 +22,9 @@
 
         show(){
 			API.getThings().then((things)=>{
-				let testDiv = 'extension-sinope-out-temp-test';
-				let warningDiv = 'extension-sinope-out-temp-warning'
+				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
+				let buttonDiv = 'extension-sinope-out-save-button'
 
 				this.sinope_thermostats = this.get_sinope_thermostat(things);
 				this.temperature_property = this.get_temp_property(things);
@@ -49,6 +49,9 @@
 				}
 				document.getElementById(listDiv)
 				.innerHTML = this.show_list(things);
+
+				document.getElementById(buttonDiv)
+				.innerHTML = '<button type=\'button\'>Save</button>'
 				/*
 				window.API.postJson(
 					`/extensions/${this.id}]/api/init`,
