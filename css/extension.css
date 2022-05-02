@@ -51,5 +51,6 @@ body {
     margin-bottom: 2rem;
     background-color: green;/*for test*/
     border-radius: 2.8rem;
+    display: flex;
     /*background-color: (rgb(72,120,154));*/
 }
