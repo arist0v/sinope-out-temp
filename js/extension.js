@@ -84,7 +84,7 @@
 			document.forms['thermostat_form'].forEach((formData) => {
 				let data = [formData.name, formData.value]
 				if (this.sinope_link.indexOf(data) < 0){
-					this.sinope_link.push(data)
+					this.sinope_link.push(data);
 				}
 			})
 			localStorage.setItem('sinope_link', this.sinope_link)
@@ -93,9 +93,9 @@
 		load_link(){
 			let data = localStorage.getItem('sinope_link')
 			if (data == null){
-				return []
+				return [];
 			}else{
-				return data
+				return data;
 			}
 		}
 
