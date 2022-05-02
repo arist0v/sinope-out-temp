@@ -151,7 +151,7 @@
 								+ thingName 
 								+'_'
 								+ property[1] 
-								+' '+ selecteds +'>' + thingName + ' > ' + property[1] 
+								+' '+ selected +'>' + thingName + ' > ' + property[1] 
 								+ '</option>'
 							}
 						}
