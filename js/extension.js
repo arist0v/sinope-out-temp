@@ -80,7 +80,7 @@
         }
 
 		save_config(){
-			alert('saveConfig')
+			alert(document.forms['thermostat_form'])
 		}
 
 		show_list(things){
