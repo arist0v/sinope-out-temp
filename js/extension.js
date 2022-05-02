@@ -97,7 +97,7 @@
 						thingName = things[thing]['title']
 					}
 				}
-				dropDown= this.get_dropDown(things, thingName);
+				dropDown= this.get_dropDown(things);
 				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
 				 + 
 				 'Sinope Thermostat : <span id=\'extension-sinope-out-temp-thing-name\'>' 
@@ -115,9 +115,9 @@
 			return listContent;
 		}
 
-		get_dropDown(things, thingName){
+		get_dropDown(things){
 			let tempDropdown = `
-			<option value=\'`+ thingName +`_none\'>None</option>
+			<option value=\'none\'>None</option>
 			`
 			this.temperature_property.forEach((property) => {
 				for (let thing in things){
