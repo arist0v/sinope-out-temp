@@ -143,8 +143,6 @@
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								if (this.sinope_link.indexOf(['sensor_'+ property[0], property[1]])){
 									selected = 'selected'
-								}else{
-									selected = ''
 								}
 								tempDropdown = tempDropdown +
 								'<option value=\'' 
