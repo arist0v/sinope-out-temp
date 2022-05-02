@@ -113,7 +113,7 @@
 								+ thingName 
 								+'_'
 								+ property[1] 
-								+'\'>' + thingName + ' ' + property[1] 
+								+'\'>' + thingName + ' > ' + property[1] 
 								+ '</option>'
 							}
 						}
