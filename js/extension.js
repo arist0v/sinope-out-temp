@@ -72,6 +72,7 @@
 
 		show_list(things){
 			let listContent = "";
+			let thingName;
 			this.sinope_thermostats.forEach((thingsID) => {
 				for (let thing in things){
 					if (things[thing]['id'] == thingsID){
