@@ -45,3 +45,8 @@ body {
     margin-left:10rem;
     overflow:auto;
 }
+
+#extension-sinope-out-temp-list-element{
+    padding: 10rem;
+    background-color: (rgb(72,120,154));
+}
