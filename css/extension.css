@@ -48,6 +48,7 @@ body {
 }
 
 #extension-sinope-out-temp-list-element{
+    display: flex;
     padding: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
