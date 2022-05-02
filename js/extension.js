@@ -48,7 +48,7 @@
 					return;
 				}
 				document.getElementById(testDiv)
-				.innerHTML = this.show_list(things);
+				.innerHTML = this.show_list(things) + '<button type=\'button\'>Save</button>';
 				/*
 				window.API.postJson(
 					`/extensions/${this.id}]/api/init`,
