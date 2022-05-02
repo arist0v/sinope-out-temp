@@ -104,7 +104,17 @@
 			this.temperature_property.forEach((property) => {
 				for (let thing in things){
 					if (property[0] == things[thing]['id']){
-						alert('thing found')
+						let thingName = things[thing]['title']
+						for (let thingProperty in things[thing]['properties']){
+							if (property[1] == things[thing]['properties'][thingProperty]['title']){
+								'<option value=\'' 
+								+ thingName 
+								+'_'
+								+ property[1] 
+								+'\'>' + thingName + ' ' + property[1] 
+								+ '</option>'
+							}
+						}
 
 					}
 				}
