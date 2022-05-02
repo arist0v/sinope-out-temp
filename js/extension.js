@@ -83,7 +83,7 @@
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
 				let data = [formData.name, formData.value]
-				if (!sinope_link.indexOf(data)){
+				if (!this.sinope_link.indexOf(data)){
 					this.sinope_link.push(data)
 				}
 			})
@@ -130,7 +130,7 @@
 		}
 
 		get_dropDown(things){
-			let selected;
+			let selected = '';
 			let tempDropdown = `
 			<option value=\'none\'>None</option>
 			`
@@ -141,7 +141,7 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
-								if (this.sinope_link.indexOf(['ensor_'+ property[0], property[1]])){
+								if (this.sinope_link.indexOf(['sensor_'+ property[0], property[1]])){
 									selected = 'selected'
 								}else{
 									selected = ''
