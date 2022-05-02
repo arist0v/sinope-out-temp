@@ -89,7 +89,7 @@
 					this.sinope_link.push(data);
 				}
 			})
-			localStorage.setItem('sinope_link', this.sinope_link)
+			//localStorage.setItem('sinope_link', this.sinope_link)
 		}
 
 		load_link(){
