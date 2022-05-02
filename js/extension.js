@@ -130,6 +130,7 @@
 		}
 
 		get_dropDown(things){
+			let selected;
 			let tempDropdown = `
 			<option value=\'none\'>None</option>
 			`
@@ -141,9 +142,9 @@
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								if (this.sinope_link.indexOf(['ensor_'+ property[0], property[1]])){
-									let selected = 'selected'
+									selected = 'selected'
 								}else{
-									let selected = ''
+									selected = ''
 								}
 								tempDropdown = tempDropdown +
 								'<option value=\'' 
