@@ -101,17 +101,10 @@
 			<select name=\'sensor\' id=\'sensor\'>
 			 <option value=\'none\'>None</option>
 			`
-			this.temperature_property.forEach((property) => {
-				for (let thing in things){
-					for (let thingProperty in things[thing]['properties']){
-						if (things[thing]['properties'][thingProperty] == property){
+			this.temperature_property.forEach((property) => {				
 							tempDropdown = tempDropdown +
 							'<option value = \'' + property + '\'>' + property + '</option>'
-						}
-					}
-				}
 			})
-
 			tempDropdown = tempDropdown + '</select>'
 			return tempDropdown
 		}
