@@ -73,8 +73,15 @@
 		show_list(things){
 			let listContent = "";
 			this.sinope_thermostats.forEach((thingsID) => {
+				for (let thing in things){
+					if (things[thing]['id'] == thingsID){
+						thingName = things[thing]['title']
+					}
+				}
 				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
-				 + thingsID +
+				 + 
+				 'Sinope Thermostat : ' + thingName + ' will display Outside Temperature from source: '
+				 +
 				 '</div>';
 			});
 
