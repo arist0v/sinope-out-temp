@@ -95,7 +95,7 @@
 
 		load_link(){
 			let data = localStorage.getItem('sinope_link')
-			if (data == null){
+			if (data == null || data == 'null'){
 				console.log('return empty_list')
 				return [];
 			}else{
