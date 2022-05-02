@@ -73,7 +73,7 @@
 		show_list(things){
 			let listContent = "";
 			let thingName;
-			let dropDown = this.get_dropDown();
+			let dropDown = this.get_dropDown(things);
 			this.sinope_thermostats.forEach((thingsID) => {
 				for (let thing in things){
 					if (things[thing]['id'] == thingsID){
@@ -96,11 +96,21 @@
 			return listContent;
 		}
 
-		get_dropDown(){
+		get_dropDown(things){
 			let tempDropdown = `
 			<select name=\'sensor\' id=\'sensor\'>
 			 <option value=\'none\'>None</option>
 			`
+			this.temperature_property.forEach((property) => {
+				for (let thing in things){
+					for (let thingProperty in things[thing]['properties']){
+						if (things[thing]['properties'][thingProperty] == property){
+							tempDropdown = tempDropdown +
+							'<option value = \'' + property + '\'>' + property + '</option>'
+						}
+					}
+				}
+			})
 
 			tempDropdown = tempDropdown + '</select>'
 			return tempDropdown
