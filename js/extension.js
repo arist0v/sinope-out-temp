@@ -23,6 +23,7 @@
         show(){
 			API.getThings().then((things)=>{
 				let testDiv = 'extension-sinope-out-temp-test';
+				let warningDiv = 'extension-sinope-out-temp-warning'
 				this.sinope_thermostats = this.get_sinope_thermostat(things);
 				this.temperature_property = this.get_temp_property(things);
 				if(this.content == ''){
@@ -34,13 +35,13 @@
 
 				console.log(this.sinope_thermostats.length);
 				if(this.sinope_thermostats.length < 1){
-					document.getElementById('extension-sinope-out-temp-warning')
+					document.getElementById(warningDiv)
 					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
 					return;
 				}
 				
 				if(this.temperature_property.length < 1){
-					document.getElementById('extension-sinope-out-temp-warning')
+					document.getElementById(warningDiv)
 					.innerHTML = 'No Temperature Property found on other devices.'
 					return;
 				}
