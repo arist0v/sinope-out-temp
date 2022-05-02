@@ -51,7 +51,13 @@
 				.innerHTML = this.show_list(things);
 
 				document.getElementById(buttonDiv)
-				.innerHTML = '<button type=\'button\'>Save</button>'
+				.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button>'
+				
+				document.getElementById('extension-sinope-out-temp-save-button')
+				.addEventListener('click', () => {
+					alert('clicked')
+				})
+
 				/*
 				window.API.postJson(
 					`/extensions/${this.id}]/api/init`,
