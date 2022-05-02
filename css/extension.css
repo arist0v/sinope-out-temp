@@ -56,3 +56,24 @@ body {
     width: 100%;
     height: fit-content;
 }
+
+.extension-sinope-out-temp-dropdown{
+    display: inline-block;
+    font-size: 1.8rem;
+    color: white;
+    line-height: 1.3;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    margin: 0 0.5rem;
+    border: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url(/images/select-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    background-position: calc(100% - 1rem);
+    padding-right: 3.5rem;
+
+}
