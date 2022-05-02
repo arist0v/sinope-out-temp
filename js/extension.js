@@ -84,6 +84,7 @@
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
 				let data = [formData.name, formData.value]
+				console.log(typeof this.sinope_link)
 				if (this.sinope_link.indexOf(data) < 0){
 					console.log(this.sinope_link)
 					this.sinope_link.push(data);
