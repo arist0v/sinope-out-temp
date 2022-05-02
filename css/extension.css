@@ -48,12 +48,11 @@ body {
 }
 
 #extension-sinope-out-temp-list-element{
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 3rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     background-color: #46769C;
     border-radius: 2.8rem;
     width: 100%;
-    height: 20rem;
+    height: fit-content;
 }
