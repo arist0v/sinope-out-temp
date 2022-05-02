@@ -7,7 +7,6 @@
             this.addMenuEntry('Sinope');
 			
 			this.sinopeMacOUI = "500b914"
-			localStorage.setItem('sinope_link', null)
 			this.sinope_link = this.load_link();
 
             this.content = '';
@@ -84,8 +83,9 @@
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
 				let data = [formData.name, formData.value]
-				console.log(typeof this.sinope_link)
+				
 				if (this.sinope_link.indexOf(data) < 0){
+					console.log(typeof this.sinope_link)
 					console.log(this.sinope_link)
 					this.sinope_link.push(data);
 				}
@@ -96,8 +96,10 @@
 		load_link(){
 			let data = localStorage.getItem('sinope_link')
 			if (data == null){
+				console.log('return empty_list')
 				return [];
 			}else{
+				console.log('return: ' + data)
 				return data;
 			}
 		}
