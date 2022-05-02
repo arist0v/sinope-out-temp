@@ -7,6 +7,7 @@
             this.addMenuEntry('Sinope');
 			
 			this.sinopeMacOUI = "500b914"
+			localStorage.setItem('sinope_link', null)
 			this.sinope_link = this.load_link();
 
             this.content = '';
