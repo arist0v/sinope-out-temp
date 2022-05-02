@@ -7,6 +7,7 @@
             this.addMenuEntry('Sinope');
 			
 			this.sinopeMacOUI = "500b914"
+			this.sinope_link = this.load_link();
 
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
@@ -81,8 +82,21 @@
 
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
-				console.log(formData.name+':'+formData.value)
+				data = [formData.name, formData.value]
+				if (!sinope_link.indexOf(data)){
+					this.sinope_link.push(data)
+				}
 			})
+			localStorage.setItem('sinope_link', this.sinope_link)
+		}
+
+		load_link(){
+			data = localStorage.getItem('sinope_link')
+			if (data == null){
+				return []
+			}else{
+				return data
+			}
 		}
 
 		show_list(things){
@@ -126,12 +140,17 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
+								if (this.sinope_link.indexOf(['ensor_'+ property[0], property[1]])){
+									let selected = 'selected'
+								}else{
+									let selected = ''
+								}
 								tempDropdown = tempDropdown +
 								'<option value=\'' 
 								+ thingName 
 								+'_'
 								+ property[1] 
-								+'\'>' + thingName + ' > ' + property[1] 
+								+'\', selected = \''+ selected +'\'>' + thingName + ' > ' + property[1] 
 								+ '</option>'
 							}
 						}
