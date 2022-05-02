@@ -103,8 +103,9 @@
 			`
 			this.temperature_property.forEach((property) => {
 				for (let thing in things){
+					alert('a: ' + property[0] + 'b: ' + things[thing]['id'])
 					if (property[0].indexOf(things[thing]['id'])){
-						alert('found thing')
+						''
 
 					}
 				}
