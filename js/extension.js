@@ -13,9 +13,9 @@
 			.then((res) => res.text())
 			.then((text) => {
 				this.content = text;
-				if( document.location.href.endsWith("sinope-out-temp") ){
+				/*if( document.location.href.endsWith("sinope-out-temp") ){
 					this.show();
-				}
+				}*/
 			})
 			.catch((e) => console.error('Failed to fetch content:', e));
         }
@@ -24,6 +24,8 @@
 			API.getThings().then((things)=>{
 				let testDiv = 'extension-sinope-out-temp-test';
 				let warningDiv = 'extension-sinope-out-temp-warning'
+				let listDiv = 'extension-sinope-out-temp-list';
+
 				this.sinope_thermostats = this.get_sinope_thermostat(things);
 				this.temperature_property = this.get_temp_property(things);
 				if(this.content == ''){
@@ -39,7 +41,7 @@
 					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
 					return;
 				}
-				
+
 				if(this.temperature_property.length < 1){
 					document.getElementById(warningDiv)
 					.innerHTML = 'No Temperature Property found on other devices.'
@@ -98,9 +100,10 @@
 							}
 						}
 				}
-			}	
+			}
 			return tempProperty;
 		};
+
     }
     
     new sinopeOutTemp();
