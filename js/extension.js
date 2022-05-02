@@ -97,7 +97,7 @@
 		}
 
 		get_dropDown(things){
-			let tempDropdown = `
+			let tempDropdown = `<div id=\'extension-sinope-out-temp-dropdown\'>
 			<select name=\'sensor\' id=\'sensor\'>
 			 <option value=\'none\'>None</option>
 			`
@@ -122,7 +122,7 @@
 				}
 			})
 
-			tempDropdown = tempDropdown + '</select>'
+			tempDropdown = tempDropdown + '</select></div>'
 			return tempDropdown
 		}
 
