@@ -121,6 +121,7 @@
 			})
 
 			tempDropdown = tempDropdown + '</select>'
+			alert(tempDropdown)
 			return tempDropdown
 		}
 
