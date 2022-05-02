@@ -48,7 +48,7 @@
 					return;
 				}
 				document.getElementById(testDiv)
-				.innerHTML = this.show_list();
+				.innerHTML = this.show_list(things);
 				/*
 				window.API.postJson(
 					`/extensions/${this.id}]/api/init`,
@@ -69,6 +69,15 @@
 				});*/
 			})
         }
+
+		show_list(things){
+			listContent = "";
+			this.sinope_thermostats.forEach((thingsID) => {
+				listContent = listContent + '\r\n' + thingsID
+			});
+
+			return listContent;
+		}
 
 		get_sinope_thermostat(things){
 			console.log('get sinope thermostats')
