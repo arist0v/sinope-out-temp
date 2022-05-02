@@ -141,7 +141,7 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
-								alert(this.sinope_link + ":" + property)
+								console.log('HEY: ' + this.sinope_link + ":" + property)
 								if (this.sinope_link.indexOf(['sensor_'+ property[0], property[1]])){
 									selected = 'selected'
 								}
