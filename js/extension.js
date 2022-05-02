@@ -83,7 +83,7 @@
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
 				let data = [formData.name, formData.value]
-				if (!this.sinope_link.indexOf(data)){
+				if (this.sinope_link.indexOf(data) < 0){
 					this.sinope_link.push(data)
 				}
 			})
@@ -143,7 +143,7 @@
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								console.log('HEY: ' + this.sinope_link + ":" + ['sensor_' + property[0], property[1]])
 								console.log(this.sinope_link.indexOf(['sensor_'+ property[0], property[1]]))
-								if (this.sinope_link.indexOf(['sensor_'+ property[0], property[1]])){
+								if (this.sinope_link.indexOf(['sensor_'+ property[0], property[1]]) >= 0){
 									selected = 'selected'
 								}
 								tempDropdown = tempDropdown +
