@@ -47,8 +47,8 @@
 					.innerHTML = 'No Temperature Property found on other devices.'
 					return;
 				}
-				document.getElementById(testDiv)
-				.innerHTML = this.show_list(things) + '<button type=\'button\'>Save</button>';
+				document.getElementById(listDiv)
+				.innerHTML = this.show_list(things);
 				/*
 				window.API.postJson(
 					`/extensions/${this.id}]/api/init`,
