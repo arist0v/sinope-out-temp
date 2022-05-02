@@ -71,7 +71,7 @@
         }
 
 		show_list(things){
-			listContent = "";
+			let listContent = "";
 			this.sinope_thermostats.forEach((thingsID) => {
 				listContent = listContent + '\r\n' + thingsID
 			});
