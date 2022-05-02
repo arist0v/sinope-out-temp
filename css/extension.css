@@ -28,7 +28,7 @@ body {
 
 #extension-sinope-out-temp-content{
     /*max-width:60rem;*/
-    max-width: fit-content;
+    max-width: fit-content + 10rem;
     margin:0 auto;
     padding:2rem;
     margin-left: 10rem;
