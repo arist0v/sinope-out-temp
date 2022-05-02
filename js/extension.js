@@ -114,7 +114,7 @@
 		get_dropDown(things){
 			let i = 0;
 			let tempDropdown = `
-			<select name=\'sensor\' id=\'senso`+ i +`\'>
+			<select name=\'sensor_` + i +`\' id=\'sensor\'>
 			 <option value=\'none\'>None</option>
 			`
 			this.temperature_property.forEach((property) => {
