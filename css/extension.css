@@ -49,6 +49,7 @@ body {
 #extension-sinope-out-temp-list-element{
     margin-top: 2rem;
     margin-bottom: 2rem;
-    background-color: green;/*for test/
+    background-color: green;/*for test*/
+    border-radius: 2.8rem;
     /*background-color: (rgb(72,120,154));*/
 }
