@@ -60,5 +60,8 @@ body {
 #extension-sinope-out-temp-list-element select{
     background-color: #4d8bb7;
     color: white;
-    
+    background-image: url(/images/select-arrow.svg);
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    background-position: calc(100% - 1rem);    
 }
