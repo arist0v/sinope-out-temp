@@ -74,8 +74,3 @@ body {
     background-position: calc(100% - 1rem);
     padding-right: 3.5rem;   
 }
-
-#extension-sinope-out-temp-dropdown{
-    position:absolute;
-    right: 0px;
-}
