@@ -73,7 +73,9 @@
 		show_list(things){
 			let listContent = "";
 			this.sinope_thermostats.forEach((thingsID) => {
-				listContent = listContent + '\r\n' + thingsID
+				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
+				 + thingsID +
+				 '</div>';
 			});
 
 			return listContent;
