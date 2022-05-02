@@ -91,11 +91,11 @@
 				}
 				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
 				 + 
-				 'Sinope Thermostat : ' 
+				 'Sinope Thermostat : <span id=\'extension-sinope-out-temp-thing-name\'>' 
 				 + 
 				 thingName 
 				 + 
-				 ' will display Outside Temperature from source: '
+				 '</span> will display Outside Temperature from source: '
 				 + 
 				 dropDown 
 				 +				 
