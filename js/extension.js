@@ -81,7 +81,7 @@
 
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
-				console.log(formData.value)
+				console.log(formData)
 			})
 		}
 
