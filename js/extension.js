@@ -80,7 +80,9 @@
         }
 
 		save_config(){
-			alert('forms: ' + document.forms['thermostat_form'])
+			document.forms.forEach((formData) => {
+				console.log(formData)
+			})
 		}
 
 		show_list(things){
