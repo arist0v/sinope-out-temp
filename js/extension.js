@@ -104,9 +104,11 @@
 			this.temperature_property.forEach((property) => {
 				for (let thing in things){
 					if (property[0] == things[thing]['id']){
+						console.log('in thing')
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
+								tempDropdown = tempDropdown +
 								'<option value=\'' 
 								+ thingName 
 								+'_'
