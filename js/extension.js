@@ -73,7 +73,7 @@
 		show_list(things){
 			let listContent = "";
 			let thingName;
-			let dropDown = get_dropDown();
+			let dropDown = this.get_dropDown();
 			this.sinope_thermostats.forEach((thingsID) => {
 				for (let thing in things){
 					if (things[thing]['id'] == thingsID){
