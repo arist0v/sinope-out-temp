@@ -48,7 +48,7 @@
 					return;
 				}
 				document.getElementById(testDiv)
-				.innerHTML = 'TEST'
+				.innerHTML = this.show_list();
 				/*
 				window.API.postJson(
 					`/extensions/${this.id}]/api/init`,
