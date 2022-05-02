@@ -89,7 +89,7 @@
 			let i = 0;
 			let listContent = "<form name=\'thermostat_form\'>";
 			let thingName;
-			let dropDown = this.get_dropDown(things);
+			let dropDown;
 			this.sinope_thermostats.forEach((thingsID) => {
 
 				for (let thing in things){
@@ -97,6 +97,7 @@
 						thingName = things[thing]['title']
 					}
 				}
+				dropDown= this.get_dropDown(things, thingName);
 				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
 				 + 
 				 'Sinope Thermostat : <span id=\'extension-sinope-out-temp-thing-name\'>' 
@@ -114,16 +115,15 @@
 			return listContent;
 		}
 
-		get_dropDown(things){
-			let tempDropdown
+		get_dropDown(things, thingName){
+			let tempDropdown = `
+			<option value=\'`+ thingName +`_none\'>None</option>
+			`
 			this.temperature_property.forEach((property) => {
 				for (let thing in things){
 					if (property[0] == things[thing]['id']){
 						console.log('in thing')
 						let thingName = things[thing]['title']
-						tempDropdown = tempDropdown + `
-							<option value=\'` + thingName + `_none\'>None</option>
-							`
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								tempDropdown = tempDropdown +
