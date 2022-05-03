@@ -82,22 +82,17 @@
 
 		save_config(){
 			document.forms['thermostat_form'].forEach((formData) => {
-				let data = [formData.name, formData.value]
-				
-				if (this.sinope_link.indexOf(data) < 0){
-					console.log(typeof this.sinope_link)
-					console.log(this.sinope_link)
-					this.sinope_link.push(data);
-				}
+				let data = {}
+				data[formData[0]] = formData[1]
 			})
-			//localStorage.setItem('sinope_link', this.sinope_link)
+			localStorage.setItem('sinope_link', this.sinope_link)
 		}
 
 		load_link(){
 			let data = localStorage.getItem('sinope_link')
 			if (data == null || data == 'null'){
 				console.log('return empty_list')
-				return [];
+				return {};
 			}else{
 				console.log('return: ' + data)
 				return data;
