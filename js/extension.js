@@ -7,7 +7,6 @@
             this.addMenuEntry('Sinope');
 			//localStorage.removeItem('sinope_link');
 			this.sinopeMacOUI = "500b914"
-			this.sinope_link = this.load_link();
 
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
@@ -23,6 +22,7 @@
 
         show(){
 			API.getThings().then((things)=>{
+				this.sinope_link = this.load_link();
 				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
 				let buttonDiv = 'extension-sinope-out-save-button'
