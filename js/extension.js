@@ -142,6 +142,7 @@
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								if (this.sinope_link.hasOwnProperty('sensor_'+ sinopeID)){
 									console.log(thingName+'_'+ property[1])
+									console.log(this.sinope_link['sensor_'+ sinopeID].value)
 									if (this.sinope_link['sensor_'+ sinopeID].value == thingName 
 									+'_'
 									+ property[1]){
