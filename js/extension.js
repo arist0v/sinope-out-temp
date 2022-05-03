@@ -142,9 +142,9 @@
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								if (this.sinope_link.hasOwnProperty('sensor_'+ sinopeID)){
 									console.log('this thing in list')
-									if (this.sinope_link['sensor_'+ property[0].value == thingName 
+									if (this.sinope_link['sensor_'+ sinopeID].value == thingName 
 									+'_'
-									+ property[1]]){
+									+ property[1]){
 										selected = 'selected'
 									}
 								}
