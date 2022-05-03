@@ -42,7 +42,7 @@ class SinopeAPIHandler(APIHandler):
                 if self.DEBUG:
                     print(manifest)
                     
-            super().__init__(manifest['id'], verbose=self.DEBUG)
+            APIHandler.__init__(self, manifest['id'], verbose=self.DEBUG)
             self.manager_proxy.add_api_handler(self)
 
             if self.DEBUG:
