@@ -141,7 +141,7 @@
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								console.log('sensor_'+ property[0])
-								
+								console.log(this.sinope_link)
 								if (this.sinope_link.hasOwnProperty('sensor_'+ property[0])){
 									console.log('this thing in list')
 									if (things.sinope_link['sensor_'+ property[0].value == thingName 
