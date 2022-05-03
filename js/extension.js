@@ -83,6 +83,7 @@
 		save_config(){
 			let data = {}
 			document.forms['thermostat_form'].forEach((formData) => {				
+				console.log(formData[0]+ ' : ' + formData[1])
 				data[formData[0]] = formData[1]
 			})
 			console.log(data)
