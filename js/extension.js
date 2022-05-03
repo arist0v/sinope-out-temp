@@ -81,10 +81,12 @@
         }
 
 		save_config(){
-			document.forms['thermostat_form'].forEach((formData) => {
-				let data = {}
+			let data = {}
+			document.forms['thermostat_form'].forEach((formData) => {				
 				data[formData[0]] = formData[1]
 			})
+			console.log(data)
+			console.log(JSON.stringify(data))
 			localStorage.removeItem('sinope_link')
 			localStorage.setItem('sinope_link', JSON.stringify(data));
 		}
