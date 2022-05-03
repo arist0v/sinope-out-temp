@@ -82,7 +82,7 @@
 			document.forms['thermostat_form'].forEach((formData) => {				
 				data[formData.name] = formData.value
 			})
-			window.API.postJson(`extensions/${this.id}/api/save_links`,
+			window.API.postJson(`${this.id}/api/save_links`,
 			 {'links':JSON.stringify(data)}
 			 ).then((body) => {
 				 if (body['state'] != 'ok'){
@@ -95,7 +95,7 @@
 		}
 
 		load_link(){
-			window.API.postJson(`extensions/${this.id}/api/load_links`)
+			window.API.postJson(`${this.id}/api/load_links`)
 			.then((body) => {
 				 if (body['state'] != 'ok'){
 					 if (body['links'] != None){
