@@ -88,7 +88,7 @@
 				 if (body['state'] != 'ok'){
 
 				 }
-			 }).catche((e)=>{
+			 }).catch((e)=>{
 
 			 })
 
@@ -104,7 +104,7 @@
 						 return {}
 					 }
 				 }
-			 }).catche((e)=>{
+			 }).catch((e)=>{
 
 			 })			
 		}
