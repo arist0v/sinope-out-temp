@@ -129,7 +129,7 @@
 			return listContent;
 		}
 
-		get_dropDown(things, thingsID){
+		get_dropDown(things, sinopeID){
 			let selected = '';
 			let tempDropdown = `
 			<option value=\'none\'>None</option>
@@ -140,7 +140,7 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
-								if (this.sinope_link.hasOwnProperty('sensor_'+ thingsID)){
+								if (this.sinope_link.hasOwnProperty('sensor_'+ sinopeID)){
 									console.log('this thing in list')
 									if (things.sinope_link['sensor_'+ property[0].value == thingName 
 									+'_'
