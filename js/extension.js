@@ -95,7 +95,7 @@
 		}
 
 		load_link(){
-			window.API.postJson(`${this.id}/api/load_links`)
+			window.API.postJson(`${this.id}/api/load_links`,{'jwt': 'jwt'})
 			.then((body) => {
 				 if (body['state'] != 'ok'){
 					 if (body['links'] != None){
