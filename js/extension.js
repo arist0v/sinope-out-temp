@@ -1,7 +1,3 @@
-import { Database } from 'gateway_addon';
-
-const packageID = require('../manifest.json');
-console.log(packageID)
 (function() {
     console.log("extension.js loaded");
     class sinopeOutTemp extends window.Extension {
@@ -86,17 +82,31 @@ console.log(packageID)
 			document.forms['thermostat_form'].forEach((formData) => {				
 				data[formData.name] = formData.value
 			})
-			localStorage.removeItem('sinope_link')
-			localStorage.setItem('sinope_link', JSON.stringify(data));
+			windows.API.postJson(`extensions/${this.id}/api/save_links`,
+			 {'links':JSON.stringify(data)}
+			 ).then((body) => {
+				 if (body['state'] != 'ok'){
+
+				 }
+			 }).catche((e)=>{
+
+			 })
+
 		}
 
 		load_link(){
-			let data = localStorage.getItem('sinope_link')
-			if (data == null || data == 'null'){
-				return {};
-			}else{
-				return JSON.parse(data);
-			}
+			windows.API.postJson(`extensions/${this.id}/api/load_links`)
+			.then((body) => {
+				 if (body['state'] != 'ok'){
+					 if (body['links'] != None){
+						return JSON.parse(body['links'])
+					 }else{
+						 return {}
+					 }
+				 }
+			 }).catche((e)=>{
+
+			 })			
 		}
 
 		show_list(things){

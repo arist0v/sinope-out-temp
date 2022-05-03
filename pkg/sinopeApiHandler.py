@@ -1,5 +1,8 @@
+from email.mime import application
 import os
 import sys
+
+from matplotlib.font_manager import json_dump
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
 from gateway_addon import APIHandler, APIResponse, Database
 import functools
@@ -18,6 +21,8 @@ if 'WEBTHINGS_HOME' in os.environ:
 class SinopeAPIHandler(APIHandler):
 
     def __init__(self, verbose=False):
+        self.availablePath = ['save_links',
+        'load_links',]
         self.addon_name = 'sinope-out-temp'
         self.running = True
         self.ready = False
@@ -48,3 +53,75 @@ class SinopeAPIHandler(APIHandler):
         except Exception as e:
             print("Failed to init ux extension API handler: " + str(e))
         self.ready = True
+
+    def handle_request(self, request):
+        try:
+            if request.method != 'POST':
+                return APIResponse(status=404)
+
+            if request.path in self.availablePath:
+                if request.path == '/save_links':
+                    links = request.body['links']
+                    self.save_link_to_db(links)
+
+                elif request.path == 'load_links':
+                    links =self.load_links_from_db()
+                    return APIResponse(
+                        state=200,
+                        content_type='application/json',
+                        content=json.dumps({'links': links, 'state': 'ok'})
+                    )
+
+                else:
+                    return APIResponse(
+                        status=500,
+                        content_type='application/json',
+                        content=json.dumps({'state':"Please Wait a few seconds, the addon has not fully loaded yet"}),
+                    )
+            else:
+                return APIResponse(status=404)
+            return APIResponse(
+                state=200,
+                content_type='application/json',
+                content=json.dumps({'state':'ok'}),
+            )
+        except:
+            ""
+
+    def load_links_from_db(self):
+        try:
+            database = Database(self.addon_name)
+            if not database.open():
+                print("Could not open settings datbase")
+                return
+        except Exception as ex:
+            print("Error! Failed to open settings database: " + str(ex))
+            self.close_proxy()
+            config = database.load_config()
+            if not config:
+                print("error loading config from database")
+                database.close()
+                return
+            if 'links' in config:
+                return config['links']
+            else:
+                return None
+
+    def save_link_to_db(self, data):
+        try:
+            database = Database(self.addon_name)
+            if not database.open():
+                print("Could not open settings datbase")
+                return
+        except Exception as ex:
+            print("Error! Failed to open settings database: " + str(ex))
+            self.close_proxy()
+        
+        config = database.load_config()
+        if not config:
+            print("error loading config from database")
+            database.close()
+            return
+        config['links'] = data
+        database.save_config(config)
+        database.close()
