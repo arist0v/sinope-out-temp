@@ -2,7 +2,6 @@
     console.log("extension.js loaded");
     class sinopeOutTemp extends window.Extension {
         constructor(){
-            console.log("extension.js class created");
             super('sinope-out-temp');
             this.addMenuEntry('Sinope');
 			//localStorage.removeItem('sinope_link');
@@ -35,8 +34,6 @@
 				else{
 					this.view.innerHTML = this.content;
 				}
-
-				console.log(this.sinope_thermostats.length);
 				if(this.sinope_thermostats.length < 1){
 					document.getElementById(warningDiv)
 					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
@@ -83,7 +80,6 @@
 		save_config(){
 			let data = {}
 			document.forms['thermostat_form'].forEach((formData) => {				
-				console.log(formData.name + ' : ' + formData.value)
 				data[formData.name] = formData.value
 			})
 			localStorage.removeItem('sinope_link')
@@ -141,12 +137,9 @@
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								if (this.sinope_link.hasOwnProperty('sensor_'+ sinopeID)){
-									console.log('PAGE: ' +thingName+'_'+ property[1])
-									console.log('LINK: '+this.sinope_link['sensor_'+ sinopeID])
 									if (this.sinope_link['sensor_'+ sinopeID] == thingName 
 									+'_'
 									+ property[1]){
-										console.log('set selected')
 										selected = 'selected'
 									}
 								}
@@ -169,9 +162,7 @@
 		}
 
 		get_sinope_thermostat(things){
-			console.log('get sinope thermostats')
 			let sinopeTheromstats = []
-				
 			for (let key in things){
 				if ((things[key]['@type'] == "Thermostat") && (things[key]['id']
 				.indexOf(this.sinopeMacOUI) >= 0)){
