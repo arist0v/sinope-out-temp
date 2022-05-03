@@ -1,3 +1,8 @@
+import Database from 'gateway_addon';
+
+
+const packageID = require('../manifest.json').id;
+console.log(packageID)
 (function() {
     console.log("extension.js loaded");
     class sinopeOutTemp extends window.Extension {
@@ -101,7 +106,6 @@
 			let thingName;
 			let dropDown;
 			this.sinope_thermostats.forEach((thingsID) => {
-
 				for (let thing in things){
 					if (things[thing]['id'] == thingsID){
 						thingName = things[thing]['title']
@@ -152,11 +156,9 @@
 								+ '</option>'
 							}
 						}
-
 					}
 				}
 			})
-
 			tempDropdown = tempDropdown + '</select>'
 			return tempDropdown
 		}
@@ -192,8 +194,6 @@
 			}
 			return tempProperty;
 		};
-
     }
-    
     new sinopeOutTemp();
 })();
