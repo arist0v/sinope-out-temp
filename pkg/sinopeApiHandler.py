@@ -88,7 +88,12 @@ class SinopeAPIHandler(APIHandler):
                 content=json.dumps({'state':'ok'}),
             )
         except:
-            ""
+            print("ERROR first TRY")
+            return APIResponse(
+                status=500,
+                content_type='application/json',
+                content=json.dumps({"state":"API Error"}),
+            )
 
     def load_links_from_db(self):
         try:
