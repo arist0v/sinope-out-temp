@@ -93,10 +93,8 @@
 		load_link(){
 			let data = localStorage.getItem('sinope_link')
 			if (data == null || data == 'null'){
-				console.log('return empty_object')
 				return {};
 			}else{
-				console.log('return: ' + data)
 				return JSON.parse(data);
 			}
 		}
@@ -143,7 +141,7 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
-								console.log(typeof this.sinope_link)
+								console.log(this.sinope_link)
 								if (this.sinope_link.hasOwnProperty('sensor_'+ property[0])){
 									selected = 'selected'
 								}
