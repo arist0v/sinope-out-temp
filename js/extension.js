@@ -1,6 +1,6 @@
-//import Database from 'gateway_addon';
+import { Database } from 'gateway_addon';
 
-const packageID = require('../manifest.json').id;
+const packageID = require('../manifest.json');
 console.log(packageID)
 (function() {
     console.log("extension.js loaded");
