@@ -21,8 +21,8 @@ if 'WEBTHINGS_HOME' in os.environ:
 class SinopeAPIHandler(APIHandler):
 
     def __init__(self, verbose=False):
-        self.availablePath = ['save_links',
-        'load_links',]
+        self.availablePath = ['/save_links',
+        '/load_links',]
         self.addon_name = 'sinope-out-temp'
         self.running = True
         self.ready = False
