@@ -4,8 +4,8 @@
         constructor(){
             console.log("extension.js class created");
             super('sinope-out-temp');
-            //this.addMenuEntry('Sinope');
-			localStorage.removeItem('sinope_link');
+            this.addMenuEntry('Sinope');
+			//localStorage.removeItem('sinope_link');
 			this.sinopeMacOUI = "500b914"
 			this.sinope_link = this.load_link();
 
