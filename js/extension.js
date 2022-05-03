@@ -143,7 +143,11 @@
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								console.log(this.sinope_link)
 								if (this.sinope_link.hasOwnProperty('sensor_'+ property[0])){
-									selected = 'selected'
+									if (things.sinope_link['sensor_'+ property[0].value == thingName 
+									+'_'
+									+ property[1]]){
+										selected = 'selected'
+									}
 								}
 								tempDropdown = tempDropdown +
 								'<option value=\'' 
