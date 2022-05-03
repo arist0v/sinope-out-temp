@@ -64,7 +64,7 @@ class SinopeAPIHandler(APIHandler):
                     links = request.body['links']
                     self.save_link_to_db(links)
 
-                elif request.path == 'load_links':
+                elif request.path == '/load_links':
                     links =self.load_links_from_db()
                     return APIResponse(
                         state=200,
@@ -79,7 +79,7 @@ class SinopeAPIHandler(APIHandler):
                         content=json.dumps({'state':"Please Wait a few seconds, the addon has not fully loaded yet"}),
                     )
             else:
-                return APIResponse(status=404)
+                return APIResponse(status=403)
             return APIResponse(
                 state=200,
                 content_type='application/json',
