@@ -1,5 +1,4 @@
-import Database from 'gateway_addon';
-
+//import Database from 'gateway_addon';
 
 const packageID = require('../manifest.json').id;
 console.log(packageID)
