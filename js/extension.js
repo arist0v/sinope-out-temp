@@ -3,7 +3,7 @@
     class sinopeOutTemp extends window.Extension {
         constructor(){
             console.log("extension.js class created");
-            super('sinope-out-temp');
+            //super('sinope-out-temp');
             this.addMenuEntry('Sinope');
 			localStorage.removeItem('sinope_link');
 			this.sinopeMacOUI = "500b914"
@@ -95,6 +95,9 @@
 				return {};
 			}else{
 				console.log('return: ' + data)
+				data.forEach((link) => {
+					console.log(link)
+				})
 				return JSON.parse(data);
 			}
 		}
