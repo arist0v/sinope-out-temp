@@ -91,13 +91,10 @@
 		load_link(){
 			let data = localStorage.getItem('sinope_link')
 			if (data == null || data == 'null'){
-				console.log('return empty_list')
+				console.log('return empty_object')
 				return {};
 			}else{
 				console.log('return: ' + data)
-				data.forEach((link) => {
-					console.log(link)
-				})
 				return JSON.parse(data);
 			}
 		}
