@@ -2,7 +2,6 @@ from email.mime import application
 import os
 import sys
 
-from matplotlib.font_manager import json_dump
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "lib"))
 from gateway_addon import APIHandler, APIResponse, Database
 import functools
