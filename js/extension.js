@@ -141,7 +141,7 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
-								this.sinope_link.forEach((link)=> {
+								Object.entries(this.sinope_link).forEach((link)=> {
 									console.log('link: '+ link)
 								})
 								if (this.sinope_link.hasOwnProperty('sensor_'+ property[0])){
