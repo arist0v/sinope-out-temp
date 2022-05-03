@@ -111,7 +111,7 @@
 						thingName = things[thing]['title']
 					}
 				}
-				dropDown= this.get_dropDown(things);
+				dropDown= this.get_dropDown(things, thingsID);
 				listContent = listContent + '<div id =\'extension-sinope-out-temp-list-element\'>'
 				 + 
 				 'Sinope Thermostat : <span id=\'extension-sinope-out-temp-thing-name\'>' 
@@ -129,7 +129,7 @@
 			return listContent;
 		}
 
-		get_dropDown(things){
+		get_dropDown(things, thingsID){
 			let selected = '';
 			let tempDropdown = `
 			<option value=\'none\'>None</option>
@@ -140,9 +140,7 @@
 						let thingName = things[thing]['title']
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
-								console.log('sensor_'+ property[0])
-								console.log(this.sinope_link)
-								if (this.sinope_link.hasOwnProperty('sensor_'+ property[0])){
+								if (this.sinope_link.hasOwnProperty('sensor_'+ thingsID)){
 									console.log('this thing in list')
 									if (things.sinope_link['sensor_'+ property[0].value == thingName 
 									+'_'
