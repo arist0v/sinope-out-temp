@@ -85,7 +85,8 @@
 				let data = {}
 				data[formData[0]] = formData[1]
 			})
-			localStorage.setItem('sinope_link', JSON.stringify(this.sinope_link));
+			localStorage.removeItem('sinope_link')
+			localStorage.setItem('sinope_link', JSON.stringify(data));
 		}
 
 		load_link(){
