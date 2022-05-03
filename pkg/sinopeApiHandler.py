@@ -56,7 +56,9 @@ class SinopeAPIHandler(APIHandler):
     def handle_request(self, request):
         try:
             if request.method != 'POST':
+                print("ERROR: not POST")
                 return APIResponse(status=404)
+
 
             if request.path in self.availablePath:
                 if request.path == '/save_links':
@@ -78,7 +80,8 @@ class SinopeAPIHandler(APIHandler):
                         content=json.dumps({'state':"Please Wait a few seconds, the addon has not fully loaded yet"}),
                     )
             else:
-                return APIResponse(status=403)
+                print("ERROR: PATH NOT FOUND")
+                return APIResponse(status=404)
             return APIResponse(
                 state=200,
                 content_type='application/json',
