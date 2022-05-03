@@ -143,7 +143,7 @@
 								if (this.sinope_link.hasOwnProperty('sensor_'+ sinopeID)){
 									console.log('PAGE: ' +thingName+'_'+ property[1])
 									console.log('LINK: '+this.sinope_link['sensor_'+ sinopeID])
-									if (this.sinope_link['sensor_'+ sinopeID].value == thingName 
+									if (this.sinope_link['sensor_'+ sinopeID] == thingName 
 									+'_'
 									+ property[1]){
 										console.log('set selected')
