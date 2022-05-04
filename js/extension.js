@@ -11,15 +11,16 @@
 			.then((res) => res.text())
 			.then((text) => {
 				this.content = text;
-				if( document.location.href.endsWith("sinope-out-temp") ){
+				/*if( document.location.href.endsWith("sinope-out-temp") ){
 					this.show();
-				}
+				}*/
 			})
 			.catch((e) => console.error('Failed to fetch content:', e));
         }
 
         show(){
 			API.getThings().then((things)=>{
+				console.log(typeof this.load_link())
 				this.sinope_link = this.load_link();
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
