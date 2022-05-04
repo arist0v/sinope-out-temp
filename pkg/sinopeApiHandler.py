@@ -54,13 +54,14 @@ class SinopeAPIHandler(APIHandler):
         self.ready = True
 
     def handle_request(self, request):
+        print("handler called in my script")
         try:
             if request.method != 'POST':
                 print("ERROR: not POST")
                 return APIResponse(status=404)
 
 
-            if request.path == '/load_links': #in self.availablePath:
+            if request.path in self.availablePath:
                 print("REQUEST IN PATHS")
                 if request.path == '/save_links':
                     links = request.body['links']
