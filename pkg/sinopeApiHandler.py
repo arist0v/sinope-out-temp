@@ -113,7 +113,7 @@ class SinopeAPIHandler(APIHandler):
             if 'links' in config:
                 return config['links']
             else:
-                return None
+                return "None"
 
     def save_link_to_db(self, data):
         try:
