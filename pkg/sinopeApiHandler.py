@@ -61,11 +61,6 @@ class SinopeAPIHandler(APIHandler):
 
 
             if request.path in self.availablePath:
-                return APIResponse(
-                        status=200,
-                        content_type='application/json',
-                        content=json.dumps(request.body),
-                    )
                 if request.path == '/save_links':
                     links = request.body['links']
                     self.save_link_to_db(links)
@@ -74,9 +69,9 @@ class SinopeAPIHandler(APIHandler):
                     links = self.load_links_from_db()
                     print(links)
                     return APIResponse(
-                        state=200,
+                        status=200,
                         content_type='application/json',
-                        content='',
+                        content=json.dumps({'links':links}),
                     )
 
                 else:
@@ -89,7 +84,7 @@ class SinopeAPIHandler(APIHandler):
                 print("ERROR: PATH NOT FOUND")
                 return APIResponse(status=404)
             return APIResponse(
-                state=200,
+                status=200,
                 content_type='application/json',
                 content=json.dumps({'state':'ok'}),
             )
