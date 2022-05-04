@@ -57,7 +57,7 @@ class SinopeAPIHandler(APIHandler):
         try:
             if request.method != 'POST':
                 print("ERROR: not POST")
-                return APIResponse(status=404)
+                return APIResponse(status=404),
 
 
             if request.path in self.availablePath:
@@ -71,7 +71,7 @@ class SinopeAPIHandler(APIHandler):
                     return APIResponse(
                         state=200,
                         content_type='application/json',
-                        content=json.dumps({'links': links, 'state': 'ok'})
+                        content=json.dumps({'state': 'ok'}),
                     )
 
                 else:
