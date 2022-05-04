@@ -20,9 +20,8 @@
         }
 
         show(){
-			this.sinope_link = this.load_link();
 			API.getThings().then((things)=>{
-				this.sinope_link = this.load_link();
+				this.sinope_link = {};//this.load_link();
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
