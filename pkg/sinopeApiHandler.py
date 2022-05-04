@@ -60,7 +60,7 @@ class SinopeAPIHandler(APIHandler):
                 return APIResponse(status=404)
 
 
-            if request.path in self.availablePath:
+            if request.path == '/load_links': #in self.availablePath:
                 print("REQUEST IN PATHS")
                 if request.path == '/save_links':
                     links = request.body['links']
