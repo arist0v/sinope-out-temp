@@ -61,6 +61,7 @@ class SinopeAPIHandler(APIHandler):
 
 
             if request.path in self.availablePath:
+                print("REQUEST IN PATHS")
                 if request.path == '/save_links':
                     links = request.body['links']
                     self.save_link_to_db(links)
