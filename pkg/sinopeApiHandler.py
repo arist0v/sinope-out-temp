@@ -71,7 +71,7 @@ class SinopeAPIHandler(APIHandler):
                     return APIResponse(
                         status=200,
                         content_type='application/json',
-                        content=json.dumps({'links':links}),
+                        content=json.dumps({'state':'ok','links':links}),
                     )
 
                 else:
