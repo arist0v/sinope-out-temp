@@ -20,6 +20,7 @@
         }
 
         show(){
+			this.sinope_link = this.load_link();
 			API.getThings().then((things)=>{
 				this.sinope_link = this.load_link();
 				console.log(typeof this.sinope_link)
