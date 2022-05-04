@@ -4,25 +4,23 @@
         constructor(){
             super('sinope-out-temp');
             this.addMenuEntry('Sinope');
-			//localStorage.removeItem('sinope_link');
 			this.sinopeMacOUI = "500b914"
-			this.sinope_link = {};
 
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
 			.then((res) => res.text())
 			.then((text) => {
 				this.content = text;
-				/*if( document.location.href.endsWith("sinope-out-temp") ){
+				if( document.location.href.endsWith("sinope-out-temp") ){
 					this.show();
-				}*/
+				}
 			})
 			.catch((e) => console.error('Failed to fetch content:', e));
         }
 
         show(){
 			API.getThings().then((things)=>{
-				//this.sinope_link = this.load_link();
+				this.sinope_link = this.load_link();
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
