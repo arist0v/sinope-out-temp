@@ -5,9 +5,7 @@
             super('sinope-out-temp');
             this.addMenuEntry('Sinope');
 			this.sinopeMacOUI = "500b914"
-			while(this.sinope_link === undefined){
-				this.sinope_link = this.load_link();
-			}
+			
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
 			.then((res) => res.text())
@@ -22,7 +20,9 @@
 
         show(){
 			API.getThings().then((things)=>{
-				
+				while(this.sinope_link === undefined){
+					this.sinope_link = this.load_link();
+				}
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
