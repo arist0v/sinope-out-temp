@@ -65,10 +65,15 @@ class SinopeAPIHandler(APIHandler):
                     links = request.body['links']
                     print(f'BODY: {request.body}')
                     self.save_link_to_db(links)
+                    return APIResponse(
+                        status=200,
+                        content_type='application/json',
+                        content=json.dumps({'state':'ok'})
+                    )
 
                 elif request.path == '/load_links':
                     links = self.load_links_from_db()
-                    print(links)
+                    
                     return APIResponse(
                         status=200,
                         content_type='application/json',
