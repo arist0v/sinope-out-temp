@@ -108,7 +108,7 @@ class SinopeAPIHandler(APIHandler):
                 return
             links = file.readlines()
             if len(links) > 0:
-                return links
+                return links.decode()
             else:
                 return "None"
 
