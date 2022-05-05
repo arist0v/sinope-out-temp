@@ -119,6 +119,7 @@ class SinopeAPIHandler(APIHandler):
 
     def save_link_to_db(self, data):
         print(f'BODY: {data}')
+        print(type(data))
         try:
             database = Database(self.addon_name)
             if not database.open():
