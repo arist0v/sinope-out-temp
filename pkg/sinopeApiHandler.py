@@ -93,8 +93,8 @@ class SinopeAPIHandler(APIHandler):
                 print("ERROR: PATH NOT FOUND")
                 return APIResponse(status=404)
 
-        except:
-            print("ERROR first TRY")
+        except Exception as e:
+            print(f"ERROR first TRY : {e}")
             return APIResponse(
                 status=500,
                 content_type='application/json',
