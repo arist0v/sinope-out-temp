@@ -103,8 +103,9 @@
 			.then((body) => {
 				 
 				 if (body['state'] == 'ok'){
-					console.log(body['links'])
+					
 					 if (body['links'] !== null){
+						console.log(body['links'])
 						return_value = JSON.parse(body['links'])
 					 }else{
 						 return_value = {}
