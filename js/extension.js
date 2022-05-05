@@ -105,13 +105,13 @@
 				 if (body['state'] == 'ok'){
 					
 					 if (body['links'] !== null){
-						console.log(body['links'])
+						
 						return_value = JSON.parse(body['links'])
 					 }else{
 						 return_value = {}
 					 }
 				 }
-				 
+				 console.log(return_value)
 				 return return_value
 			 }).catch((e)=>{
 
