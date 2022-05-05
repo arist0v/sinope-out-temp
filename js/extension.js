@@ -99,9 +99,8 @@
 			const jwt = localStorage.getItem('jwt')
 			window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 			.then((body) => {
-				console.log(body)
 				 if (body['state'] != 'ok'){
-					 if (body['links'] != 'None'){
+					 if (body['links'] != null){
 						return JSON.parse(body['links'])
 					 }else{
 						 return object
