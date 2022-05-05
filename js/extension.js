@@ -21,7 +21,7 @@
         show(){
 			API.getThings().then((things)=>{
 				//this.sinope_link = this.load_link();
-				setTimeout({this:sinope_link = this.load_link();}, 1000)
+				setTimeout({this:sinope_link = this.load_link()}, 1000)
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
