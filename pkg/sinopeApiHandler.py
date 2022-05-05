@@ -57,13 +57,13 @@ class SinopeAPIHandler(APIHandler):
         try:
             if request.method != 'POST':
                 print("ERROR: not POST")
-                return APIResponse(status=404),
+                return APIResponse(status=404)
 
 
             if request.path in self.availablePath:
                 if request.path == '/save_links':
                     links = request.body['links']
-                    print(f'BODY: {links}')
+
                     self.save_link_to_db(links)
                     return APIResponse(
                         status=200,
@@ -89,11 +89,7 @@ class SinopeAPIHandler(APIHandler):
             else:
                 print("ERROR: PATH NOT FOUND")
                 return APIResponse(status=404)
-            return APIResponse(
-                status=200,
-                content_type='application/json',
-                content=json.dumps({'state':'ok'}),
-            )
+
         except:
             print("ERROR first TRY")
             return APIResponse(
@@ -122,6 +118,7 @@ class SinopeAPIHandler(APIHandler):
                 return "None"
 
     def save_link_to_db(self, data):
+        print(f'BODY: {data}')
         try:
             database = Database(self.addon_name)
             if not database.open():
