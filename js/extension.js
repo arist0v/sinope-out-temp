@@ -108,7 +108,7 @@
 					 }
 				 }
 				 console.log(return_value)
-				 return {}
+				 return new Object()
 			 }).catch((e)=>{
 
 			 })			
