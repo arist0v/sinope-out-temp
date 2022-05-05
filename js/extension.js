@@ -20,9 +20,8 @@
 
         show(){
 			API.getThings().then((things)=>{
-				while(this.sinope_link === undefined){
-					this.sinope_link = this.load_link();
-				}
+				this.sinope_link = this.load_link();
+				
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
 				let listDiv = 'extension-sinope-out-temp-list';
@@ -100,6 +99,7 @@
 			const jwt = localStorage.getItem('jwt')
 			window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 			.then((body) => {
+				console.log(body)
 				 if (body['state'] != 'ok'){
 					 if (body['links'] != 'None'){
 						return JSON.parse(body['links'])
