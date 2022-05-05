@@ -101,9 +101,9 @@
 			let return_value
 			window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 			.then((body) => {
-				 console.log(body)
+				 
 				 if (body['state'] == 'ok'){
-
+					console.log(body['links'])
 					 if (body['links'] !== null){
 						return_value = JSON.parse(body['links'])
 					 }else{
