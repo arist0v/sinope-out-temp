@@ -13,6 +13,7 @@ _TIMEOUT = 3
 _CONFIG_PATH = [
     os.path.join(os.path.expanduser('~'), '.webthings', 'config'),
 ]
+_DATA_PATH = os.path.join(os.path.expanduser('~'), '.webthings', 'data')
 
 if 'WEBTHINGS_HOME' in os.environ:
     _CONFIG_PATH.insert(0, os.path.join(os.environ['WEBTHINGS_HOME'], 'config'))
@@ -41,6 +42,8 @@ class SinopeAPIHandler(APIHandler):
                 manifest = json.load(f)
                 if self.DEBUG:
                     print(manifest)
+
+            self.id = manifest['id']
                     
             APIHandler.__init__(self, manifest['id'], verbose=self.DEBUG)
             self.manager_proxy.add_api_handler(self)
@@ -64,7 +67,7 @@ class SinopeAPIHandler(APIHandler):
                 if request.path == '/save_links':
                     links = request.body['links']
 
-                    self.save_link_to_db(links)
+                    self.save_links(links)
                     return APIResponse(
                         status=200,
                         content_type='application/json',
@@ -72,7 +75,7 @@ class SinopeAPIHandler(APIHandler):
                     )
 
                 elif request.path == '/load_links':
-                    links = self.load_links_from_db()
+                    links = self.load_links()
                     
                     return APIResponse(
                         status=200,
@@ -98,42 +101,22 @@ class SinopeAPIHandler(APIHandler):
                 content=json.dumps({"state":"API Error"}),
             )
 
-    def load_links_from_db(self):
-        try:
-            database = Database(self.addon_name)
-            if not database.open():
-                print("Could not open settings datbase")
+    def load_links(self):
+        with open(os.path.join(_DATA_PATH, self.id, 'links.str'), 'rb') as file:
+            if not file:
+                print(f'Error opening file to read')
                 return
-        except Exception as ex:
-            print("Error! Failed to open settings database: " + str(ex))
-            self.close_proxy()
-            config = database.load_config()
-            if not config:
-                print("error loading config from database")
-                database.close()
-                return
-            if 'links' in config:
-                return config['links']
+            links = file.readlines()
+            if len(links > 0):
+                return links
             else:
                 return "None"
 
-    def save_link_to_db(self, data):
+    def save_links(self, data):
         print(f'BODY: {data}')
         print(type(data))
-        try:
-            database = Database(self.addon_name)
-            if not database.open():
-                print("Could not open settings datbase")
+        with open (os.path.join(_DATA_PATH, self.id, 'links.str'),'wb') as file:
+            if not file:
+                print(f'Error opening file for storage')
                 return
-        except Exception as ex:
-            print("Error! Failed to open settings database: " + str(ex))
-            self.close_proxy()
-        
-        config = database.load_config()
-        if not config:
-            print("error loading config from database")
-            database.close()
-            return
-        config['links'] = data
-        database.save_config(config)
-        database.close()
+            file.write(data)
