@@ -103,7 +103,7 @@
 					 if (body['links'] !== null){
 						return JSON.parse(body['links'])
 					 }else{
-						 return object
+						 return {}
 					 }
 				 }
 			 }).catch((e)=>{
