@@ -119,4 +119,4 @@ class SinopeAPIHandler(APIHandler):
             if not file:
                 print(f'Error opening file for storage')
                 return
-            file.write(data)
+            file.write(data.encode('ascii'))
