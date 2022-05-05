@@ -100,7 +100,7 @@
 			window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 			.then((body) => {
 				 if (body['state'] != 'ok'){
-					 if (body['links'] != null){
+					 if (body['links'] !== null){
 						return JSON.parse(body['links'])
 					 }else{
 						 return object
