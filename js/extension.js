@@ -83,6 +83,7 @@
 			document.forms['thermostat_form'].forEach((formData) => {				
 				data[formData.name] = formData.value
 			})
+			console.log(data)
 			window.API.postJson(`${this.id}/api/save_links`,
 			 {'links':JSON.stringify(data)}
 			 ).then((body) => {
