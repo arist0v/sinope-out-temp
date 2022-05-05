@@ -107,8 +107,8 @@
 						 return_value = {}
 					 }
 				 }
-				 console.log(typeof return_value)
-				 return new Object()
+				 
+				 return return_value
 			 }).catch((e)=>{
 
 			 })			
@@ -155,11 +155,13 @@
 						for (let thingProperty in things[thing]['properties']){
 							if (property[1] == things[thing]['properties'][thingProperty]['title']){
 								if (this.sinope_link.hasOwnProperty('sensor_'+ sinopeID)){
-									if (this.sinope_link['sensor_'+ sinopeID] == thingName 
-									+'_'
-									+ property[1]){
-										selected = 'selected'
-									}
+									if (this.sinope_link !=== undefined){
+										if (this.sinope_link['sensor_'+ sinopeID] == thingName 
+										+'_'
+										+ property[1]){
+											selected = 'selected'
+										}
+								}
 								}
 								tempDropdown = tempDropdown +
 								'<option value=\'' 
