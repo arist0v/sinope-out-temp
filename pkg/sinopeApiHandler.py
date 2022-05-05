@@ -106,10 +106,10 @@ class SinopeAPIHandler(APIHandler):
             if not file:
                 print(f'Error opening file to read')
                 return
-            links = file.readlines()[0]
+            links = file.readlines()
             print(links)
             if len(links) > 0:
-                return links.decode()
+                return links[0].decode()
             else:
                 return "None"
 
