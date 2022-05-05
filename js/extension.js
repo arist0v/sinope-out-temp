@@ -107,7 +107,7 @@
 						 return_value = {}
 					 }
 				 }
-				 console.log(return_value)
+				 console.log(typeof return_value)
 				 return new Object()
 			 }).catch((e)=>{
 
