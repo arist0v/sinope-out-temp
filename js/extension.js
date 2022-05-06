@@ -29,13 +29,13 @@
                 this.view.innerHTML = this.content;
             
                 API.getThings().then((things) => {
-			
+					const jwt = localStorage.getItem('jwt')
                 	this.all_things = things;
                     console.log("things.length: ", things.length);
                 
     				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
     				.then((body) => {
-                        const jwt = localStorage.getItem('jwt')
+                        
                         console.log('load_links response: ', body);
                     
     					if (body['state'] == 'ok'){
