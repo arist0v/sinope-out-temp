@@ -20,11 +20,12 @@
 
         show(){
 			this.load_link().then((links) => {
-				console.log('link after then '+links )
-				this.sinope_link = links
+				//console.log('link after then '+links )
+				//this.sinope_link = links
 				API.getThings().then((things)=>{
 					
-					
+					console.log('link after then '+links )
+					this.sinope_link = links
 					//this.sinope_link = this.load_link()
 					
 					console.log(typeof this.sinope_link)
