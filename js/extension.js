@@ -19,12 +19,11 @@
         }
 
         show(){
+			this.load_link().then((links) => {
+				this.sinope_link = links
 			API.getThings().then((things)=>{
-				this.load_link().then((links) => {
-					this.sinope_link = links
-				}).catch((e) => {
-
-				})
+				
+				
 				//this.sinope_link = this.load_link()
 				
 				console.log(typeof this.sinope_link)
@@ -81,6 +80,9 @@
 					alert("connection error");
 				});*/
 			})
+		}).catch((e) => {
+
+		})
 			console.log(typeof this.sinope_link)
         }
 
