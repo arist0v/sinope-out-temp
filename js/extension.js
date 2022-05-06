@@ -35,7 +35,7 @@
                 
     				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
     				.then((body) => {
-                        
+                        const jwt = localStorage.getItem('jwt')
                         console.log('load_links response: ', body);
                     
     					if (body['state'] == 'ok'){
