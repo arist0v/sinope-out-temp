@@ -41,7 +41,7 @@
     					if (body['state'] == 'ok'){
                             console.log("body['links']: ", body['links']);
     						if (body['links'] !== null){
-                                this.sinope_link = JSON.parse(body['links'];
+                                this.sinope_link = JSON.parse(body['links']);
                 				console.log("typeof this.sinope_link: ", typeof this.sinope_link);
                                 console.log("this.sinope_link.length: ", this.sinope_link.length);
                                 
