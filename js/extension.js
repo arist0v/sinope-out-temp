@@ -19,74 +19,67 @@
         }
 
         async show(){
-			await this.load_link().then((links) => {
-				//console.log('link after then '+links )
-				//this.sinope_link = links
-
-				API.getThings().then((things)=>{
-					
-					console.log('link after then '+links )
+			API.getThings().then((things)=>{
+				await this.load_link().then((links) => {
 					this.sinope_link = links
-					//this.sinope_link = this.load_link()
-					while (links === undefined){
-						this.sinope_link = links
-					}
-					console.log(typeof this.links)
-					let warningDiv = 'extension-sinope-out-temp-warning';
-					let listDiv = 'extension-sinope-out-temp-list';
-					let buttonDiv = 'extension-sinope-out-save-button'
+				}).catch((e) => {
 
-					this.sinope_thermostats = this.get_sinope_thermostat(things);
-					this.temperature_property = this.get_temp_property(things);
-					if(this.content == ''){
-						return;
+				})
+				//this.sinope_link = this.load_link()
+				
+				console.log(typeof this.sinope_link)
+				let warningDiv = 'extension-sinope-out-temp-warning';
+				let listDiv = 'extension-sinope-out-temp-list';
+				let buttonDiv = 'extension-sinope-out-save-button'
+
+				this.sinope_thermostats = this.get_sinope_thermostat(things);
+				this.temperature_property = this.get_temp_property(things);
+				if(this.content == ''){
+					return;
+				}
+				else{
+					this.view.innerHTML = this.content;
+				}
+				if(this.sinope_thermostats.length < 1){
+					document.getElementById(warningDiv)
+					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
+					return;
+				}
+
+				if(this.temperature_property.length < 1){
+					document.getElementById(warningDiv)
+					.innerHTML = 'No Temperature Property found on other devices.'
+					return;
+				}
+				document.getElementById(listDiv)
+				.innerHTML = this.show_list(things);
+
+				document.getElementById(buttonDiv)
+				.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button></form>'
+				
+				document.getElementById('extension-sinope-out-temp-save-button')
+				.addEventListener('click', () => {
+					this.save_config();
+				})
+
+				/*
+				window.API.postJson(
+					`/extensions/${this.id}]/api/init`,
+					{'action':'init' }
+				).then((body) => { 
+					console.log("init response: ");
+					console.log(body);
+					
+					if( body['state'] != true ){
+						console.log("response was OK");
 					}
 					else{
-						this.view.innerHTML = this.content;
-					}
-					if(this.sinope_thermostats.length < 1){
-						document.getElementById(warningDiv)
-						.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
-						return;
+						console.log("response was not OK");
 					}
 
-					if(this.temperature_property.length < 1){
-						document.getElementById(warningDiv)
-						.innerHTML = 'No Temperature Property found on other devices.'
-						return;
-					}
-					document.getElementById(listDiv)
-					.innerHTML = this.show_list(things);
-
-					document.getElementById(buttonDiv)
-					.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button></form>'
-					
-					document.getElementById('extension-sinope-out-temp-save-button')
-					.addEventListener('click', () => {
-						this.save_config();
-					})
-
-					/*
-					window.API.postJson(
-						`/extensions/${this.id}]/api/init`,
-						{'action':'init' }
-					).then((body) => { 
-						console.log("init response: ");
-						console.log(body);
-						
-						if( body['state'] != true ){
-							console.log("response was OK");
-						}
-						else{
-							console.log("response was not OK");
-						}
-
-					}).catch((e) => {
-						alert("connection error");
-					});*/
-				})
-			}).catch((e) => {
-
+				}).catch((e) => {
+					alert("connection error");
+				});*/
 			})
 			console.log(typeof this.sinope_link)
         }
@@ -110,13 +103,11 @@
 		}
 
 		load_link(){
-			console.log('load_link startd)')
 			return new Promise((reslove, reject) => {
-				console.log('inside return promise')
 				const jwt = localStorage.getItem('jwt')
-				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
+				let return_value
+				window.AudioParam.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 				.then((body) => {
-					console.log('API call done')
 					if (body['state'] == 'ok'){
 						if (body['links'] !== null){
 							reslove(JSON.parse(body['links']))	
