@@ -11,9 +11,9 @@
 			.then((res) => res.text())
 			.then((text) => {
 				this.content = text;
-				/*if( document.location.href.endsWith("sinope-out-temp") ){
+				if( document.location.href.endsWith("sinope-out-temp") ){
 					this.show();
-				}*/
+				}
 			})
 			.catch((e) => console.error('Failed to fetch content:', e));
         }
@@ -105,7 +105,6 @@
 		load_link(){
 			return new Promise((resolve, reject) => {
 				const jwt = localStorage.getItem('jwt')
-				let return_value
 				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 				.then((body) => {
 					if (body['state'] == 'ok'){
