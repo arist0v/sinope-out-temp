@@ -110,7 +110,7 @@
 			return new Promise((reslove, reject) => {
 				console.log('inside return promise')
 				const jwt = localStorage.getItem('jwt')
-				window.AudioParam.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
+				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 				.then((body) => {
 					console.log('API call done')
 					if (body['state'] == 'ok'){
