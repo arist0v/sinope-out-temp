@@ -19,6 +19,11 @@
         }
 
         show(){
+			if(this.content == ''){
+				console.log("no content yet");
+				return;
+			}
+			else{
 			API.getThings().then(async (things)=>{
 				await this.load_link().then((links) => {
 					this.sinope_link = links
@@ -81,7 +86,7 @@
 					alert("connection error");
 				});*/
 			})
-			console.log(typeof this.sinope_link)
+			console.log(typeof this.sinope_link)}
         }
 
 		save_config(){
