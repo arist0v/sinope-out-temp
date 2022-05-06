@@ -20,7 +20,7 @@
 
         show(){
 			API.getThings().then((things)=>{
-				this.load_link();
+				setTimeout(this.load_link(), 1000);
 				
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
