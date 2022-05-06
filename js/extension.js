@@ -76,6 +76,7 @@
 					alert("connection error");
 				});*/
 			})
+			console.log(typeof this.sinope_link)
         }
 
 		save_config(){
