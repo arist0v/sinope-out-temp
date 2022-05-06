@@ -28,7 +28,7 @@
                 API.getThings().then((things) => {
 			
                 	this.all_things = things;
-                
+					const jwt = localStorage.getItem('jwt')
     				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
     				.then((body) => {
                         
