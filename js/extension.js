@@ -112,7 +112,7 @@
 					 }
 				 }
 				 console.log(typeof return_value)
-				 Object.assign(return_value, this.sinope_link)
+				 Object.assign(this.sinope_link, return_value)
 			 }).catch((e)=>{
 
 			 })			
