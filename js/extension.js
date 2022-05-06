@@ -22,13 +22,14 @@
 			this.load_link().then((links) => {
 				//console.log('link after then '+links )
 				//this.sinope_link = links
+
 				API.getThings().then((things)=>{
 					
 					console.log('link after then '+links )
 					this.sinope_link = links
 					//this.sinope_link = this.load_link()
 					
-					console.log(typeof this.sinope_link)
+					console.log(typeof this.links)
 					let warningDiv = 'extension-sinope-out-temp-warning';
 					let listDiv = 'extension-sinope-out-temp-list';
 					let buttonDiv = 'extension-sinope-out-save-button'
