@@ -21,68 +21,68 @@
         show(){
 			this.load_link().then((links) => {
 				this.sinope_link = links
-			API.getThings().then((things)=>{
-				
-				
-				//this.sinope_link = this.load_link()
-				
-				console.log(typeof this.sinope_link)
-				let warningDiv = 'extension-sinope-out-temp-warning';
-				let listDiv = 'extension-sinope-out-temp-list';
-				let buttonDiv = 'extension-sinope-out-save-button'
-
-				this.sinope_thermostats = this.get_sinope_thermostat(things);
-				this.temperature_property = this.get_temp_property(things);
-				if(this.content == ''){
-					return;
-				}
-				else{
-					this.view.innerHTML = this.content;
-				}
-				if(this.sinope_thermostats.length < 1){
-					document.getElementById(warningDiv)
-					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
-					return;
-				}
-
-				if(this.temperature_property.length < 1){
-					document.getElementById(warningDiv)
-					.innerHTML = 'No Temperature Property found on other devices.'
-					return;
-				}
-				document.getElementById(listDiv)
-				.innerHTML = this.show_list(things);
-
-				document.getElementById(buttonDiv)
-				.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button></form>'
-				
-				document.getElementById('extension-sinope-out-temp-save-button')
-				.addEventListener('click', () => {
-					this.save_config();
-				})
-
-				/*
-				window.API.postJson(
-					`/extensions/${this.id}]/api/init`,
-					{'action':'init' }
-				).then((body) => { 
-					console.log("init response: ");
-					console.log(body);
+				API.getThings().then((things)=>{
 					
-					if( body['state'] != true ){
-						console.log("response was OK");
+					
+					//this.sinope_link = this.load_link()
+					
+					console.log(typeof this.sinope_link)
+					let warningDiv = 'extension-sinope-out-temp-warning';
+					let listDiv = 'extension-sinope-out-temp-list';
+					let buttonDiv = 'extension-sinope-out-save-button'
+
+					this.sinope_thermostats = this.get_sinope_thermostat(things);
+					this.temperature_property = this.get_temp_property(things);
+					if(this.content == ''){
+						return;
 					}
 					else{
-						console.log("response was not OK");
+						this.view.innerHTML = this.content;
+					}
+					if(this.sinope_thermostats.length < 1){
+						document.getElementById(warningDiv)
+						.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
+						return;
 					}
 
-				}).catch((e) => {
-					alert("connection error");
-				});*/
-			})
-		}).catch((e) => {
+					if(this.temperature_property.length < 1){
+						document.getElementById(warningDiv)
+						.innerHTML = 'No Temperature Property found on other devices.'
+						return;
+					}
+					document.getElementById(listDiv)
+					.innerHTML = this.show_list(things);
 
-		})
+					document.getElementById(buttonDiv)
+					.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button></form>'
+					
+					document.getElementById('extension-sinope-out-temp-save-button')
+					.addEventListener('click', () => {
+						this.save_config();
+					})
+
+					/*
+					window.API.postJson(
+						`/extensions/${this.id}]/api/init`,
+						{'action':'init' }
+					).then((body) => { 
+						console.log("init response: ");
+						console.log(body);
+						
+						if( body['state'] != true ){
+							console.log("response was OK");
+						}
+						else{
+							console.log("response was not OK");
+						}
+
+					}).catch((e) => {
+						alert("connection error");
+					});*/
+				})
+			}).catch((e) => {
+
+			})
 			console.log(typeof this.sinope_link)
         }
 
