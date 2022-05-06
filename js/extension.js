@@ -20,7 +20,7 @@
 
         show(){
 			API.getThings().then((things)=>{
-				this.sinope_link = this.load_link();
+				this.load_link();
 				
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
@@ -112,7 +112,7 @@
 					 }
 				 }
 				 console.log(typeof return_value)
-				 return Object.assign({}, return_value)
+				 this.sinope_link = Object.assign({}, return_value)
 			 }).catch((e)=>{
 
 			 })			
