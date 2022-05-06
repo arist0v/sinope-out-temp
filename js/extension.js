@@ -29,7 +29,7 @@
 					this.sinope_link = links
 					//this.sinope_link = this.load_link()
 					while (links === undefined){
-					
+						this.sinope_link = links
 					}
 					console.log(typeof this.links)
 					let warningDiv = 'extension-sinope-out-temp-warning';
