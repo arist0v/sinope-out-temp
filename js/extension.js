@@ -22,6 +22,8 @@
 			API.getThings().then((things)=>{
 				this.load_link().then((links) => {
 					this.sinope_link = links
+				}).catch((e) => {
+
 				})
 				//this.sinope_link = this.load_link()
 				
@@ -101,25 +103,22 @@
 		}
 
 		load_link(){
-			const jwt = localStorage.getItem('jwt')
-			let return_value
-			window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
-			.then((body) => {
-				 
-				 if (body['state'] == 'ok'){
-					
-					 if (body['links'] !== null){
-						
-						return_value = JSON.parse(body['links'])
-					 }else{
-						 return_value = {}
-					 }
-				 }
-				 console.log(typeof return_value)
-				 return new Promises(Object.assign({}, return_value),)
-			 }).catch((e)=>{
-
-			 })			
+			return new Promise((reslove, reject) => {
+				const jwt = localStorage.getItem('jwt')
+				let return_value
+				window.AudioParam.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
+				.then((body) => {
+					if (body['state'] == 'ok'){
+						if (body['links'] !== null){
+							reslove(JSON.parse(body['links']))	
+						}else{
+							reslove({})
+						}
+					}else{
+						reject(body['state'])
+					}
+				})
+			})			
 		}
 
 		show_list(things){
