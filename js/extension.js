@@ -20,7 +20,7 @@
 
         show(){
 			API.getThings().then((things)=>{
-				this.load_link()
+				this.load_link().then()
 				setTimeout(console.log(typeof this.sinope_link), 50000);
 				
 				console.log(typeof this.sinope_link)
