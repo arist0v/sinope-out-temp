@@ -18,8 +18,8 @@
 			.catch((e) => console.error('Failed to fetch content:', e));
         }
 
-        show(){
-			this.load_link().then((links) => {
+        async show(){
+			await this.load_link().then((links) => {
 				//console.log('link after then '+links )
 				//this.sinope_link = links
 
