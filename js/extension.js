@@ -108,8 +108,8 @@
 		load_link(){
 			console.log('load_link startd)')
 			return new Promise((reslove, reject) => {
+				console.log('inside return promise')
 				const jwt = localStorage.getItem('jwt')
-				let return_value
 				window.AudioParam.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 				.then((body) => {
 					console.log('API call done')
