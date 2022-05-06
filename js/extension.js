@@ -18,7 +18,7 @@
 			.catch((e) => console.error('Failed to fetch content:', e));
         }
 
-        async show(){
+        show(){
 			API.getThings().then(async (things)=>{
 				await this.load_link().then((links) => {
 					this.sinope_link = links
