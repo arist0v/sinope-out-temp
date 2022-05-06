@@ -5,7 +5,7 @@
             super('sinope-out-temp');
             this.addMenuEntry('Sinope');
 			this.sinopeMacOUI = "500b914"
-			this.load_link()
+			
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
 			.then((res) => res.text())
@@ -20,7 +20,7 @@
 
         show(){
 			API.getThings().then((things)=>{
-				setTimeout(this.load_link(), 1000);
+				setTimeout(this.load_link(), 5000);
 				
 				console.log(typeof this.sinope_link)
 				let warningDiv = 'extension-sinope-out-temp-warning';
