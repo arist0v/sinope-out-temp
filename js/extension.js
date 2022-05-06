@@ -6,6 +6,7 @@
             this.addMenuEntry('Sinope');
 			this.sinopeMacOUI = "500b914"
 			
+            this.all_things = [];
             this.content = '';
 			fetch(`/extensions/${this.id}/views/content.html`)
 			.then((res) => res.text())
@@ -24,69 +25,91 @@
 				return;
 			}
 			else{
-			API.getThings().then(async (things)=>{
-				await this.load_link().then((links) => {
-					this.sinope_link = links
-				}).catch((e) => {
+                console.log("content available");
+                this.view.innerHTML = this.content;
+            
+                API.getThings().then((things) => {
+			
+                	this.all_things = things;
+                    console.log("things.length: ", things.length);
+                
+    				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
+    				.then((body) => {
+                        
+                        console.log('load_links response: ', body);
+                    
+    					if (body['state'] == 'ok'){
+                            console.log("body['links']: ", body['links']);
+    						if (body['links'] !== null){
+                                this.sinope_link = JSON.parse(body['links'];
+                				console.log("typeof this.sinope_link: ", typeof this.sinope_link);
+                                console.log("this.sinope_link.length: ", this.sinope_link.length);
+                                
+                				let warningDiv = 'extension-sinope-out-temp-warning';
+                				let listDiv = 'extension-sinope-out-temp-list';
+                				let buttonDiv = 'extension-sinope-out-save-button'
 
-				})
-				//this.sinope_link = this.load_link()
+                				this.sinope_thermostats = this.get_sinope_thermostat(things);
+                				this.temperature_property = this.get_temp_property(things);
+                				
+                				if(this.sinope_thermostats.length < 1){
+                					document.getElementById(warningDiv)
+                					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
+                					return;
+                				}
+
+                				if(this.temperature_property.length < 1){
+                					document.getElementById(warningDiv)
+                					.innerHTML = 'No Temperature Property found on other devices.'
+                					return;
+                				}
+                                
+                                console.log("document.getElementById(listDiv): ", document.getElementById(listDiv));
+                                
+                				document.getElementById(listDiv)
+                				.innerHTML = this.show_list(things);
+
+                				document.getElementById(buttonDiv)
+                				.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button></form>'
 				
-				console.log(typeof this.sinope_link)
-				let warningDiv = 'extension-sinope-out-temp-warning';
-				let listDiv = 'extension-sinope-out-temp-list';
-				let buttonDiv = 'extension-sinope-out-save-button'
-
-				this.sinope_thermostats = this.get_sinope_thermostat(things);
-				this.temperature_property = this.get_temp_property(things);
-				if(this.content == ''){
-					return;
-				}
-				else{
-					this.view.innerHTML = this.content;
-				}
-				if(this.sinope_thermostats.length < 1){
-					document.getElementById(warningDiv)
-					.innerHTML = 'No sinope Thermostat found. Did you have any on the gateway?'
-					return;
-				}
-
-				if(this.temperature_property.length < 1){
-					document.getElementById(warningDiv)
-					.innerHTML = 'No Temperature Property found on other devices.'
-					return;
-				}
-				document.getElementById(listDiv)
-				.innerHTML = this.show_list(things);
-
-				document.getElementById(buttonDiv)
-				.innerHTML = '<button type=\'button\' id=\'extension-sinope-out-temp-save-button\'>Save</button></form>'
+                				document.getElementById('extension-sinope-out-temp-save-button')
+                				.addEventListener('click', () => {
+                					this.save_config();
+                				})
+                            
+    							
+    						}else{
+    							console.log("Warning, body links was null");
+    						}
+    					}else{
+    						console.log("api responded with not ok state");
+    					}
+    				})
+                    
 				
-				document.getElementById('extension-sinope-out-temp-save-button')
-				.addEventListener('click', () => {
-					this.save_config();
-				})
+    				
 
-				/*
-				window.API.postJson(
-					`/extensions/${this.id}]/api/init`,
-					{'action':'init' }
-				).then((body) => { 
-					console.log("init response: ");
-					console.log(body);
+    				/*
+    				window.API.postJson(
+    					`/extensions/${this.id}]/api/init`,
+    					{'action':'init' }
+    				).then((body) => { 
+    					console.log("init response: ");
+    					console.log(body);
 					
-					if( body['state'] != true ){
-						console.log("response was OK");
-					}
-					else{
-						console.log("response was not OK");
-					}
+    					if( body['state'] != true ){
+    						console.log("response was OK");
+    					}
+    					else{
+    						console.log("response was not OK");
+    					}
 
-				}).catch((e) => {
-					alert("connection error");
-				});*/
-			})
-			console.log(typeof this.sinope_link)}
+    				}).catch((e) => {
+    					alert("connection error");
+    				});*/
+    			})
+    			
+            }
         }
 
 		save_config(){
@@ -105,24 +128,6 @@
 
 			 })
 
-		}
-
-		load_link(){
-			return new Promise((resolve, reject) => {
-				const jwt = localStorage.getItem('jwt')
-				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
-				.then((body) => {
-					if (body['state'] == 'ok'){
-						if (body['links'] !== null){
-							resolve(JSON.parse(body['links']))	
-						}else{
-							resolve({})
-						}
-					}else{
-						reject(body['state'])
-					}
-				})
-			})			
 		}
 
 		show_list(things){
