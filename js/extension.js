@@ -19,7 +19,7 @@
         }
 
         async show(){
-			API.getThings().then((things)=>{
+			API.getThings().then(async (things)=>{
 				await this.load_link().then((links) => {
 					this.sinope_link = links
 				}).catch((e) => {
