@@ -103,16 +103,16 @@
 		}
 
 		load_link(){
-			return new Promise((reslove, reject) => {
+			return new Promise((resolve, reject) => {
 				const jwt = localStorage.getItem('jwt')
 				let return_value
-				window.AudioParam.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
+				window.API.postJson(`${this.id}/api/load_links`,{'jwt': jwt})
 				.then((body) => {
 					if (body['state'] == 'ok'){
 						if (body['links'] !== null){
-							reslove(JSON.parse(body['links']))	
+							resolve(JSON.parse(body['links']))	
 						}else{
-							reslove({})
+							resolve({})
 						}
 					}else{
 						reject(body['state'])
