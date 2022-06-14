@@ -1,8 +1,3 @@
-body {
-    background-color:rgb(93, 155, 199)!important;
-    color: white;
-}
-
 #main-menu #extension-sinope-out-temp-menu-item{
     background-image: url(../images/menu-icon.svg);
 } 
